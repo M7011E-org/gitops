@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  annotations:
+    cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer }}
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - {{ .Values.domain }}
+      secretName: frontend-tls
+  rules:
+    - host: {{ .Values.domain }}
+      http:
+        paths:
+          # Later the backend gets its own path (e.g. /api) on the same domain
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
