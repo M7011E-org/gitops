@@ -1,8 +1,8 @@
 replicas: 1
 
 image:
-  repository: ghcr.io/m7011e-org/kubechess-frontend-test
-  tag: "b20c4abf97c6673ffd7983f20cb357809fcea4c8"
+  repository: ghcr.io/m7011e-org/kubechess-frontend
+  tag: "latest"
 
 domain: group-11-m7011e-ltu.se
 
